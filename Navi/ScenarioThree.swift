@@ -27,6 +27,7 @@ struct ScenarioThree: View {
         }
         .sheet(item: $viewModel.state.displayedItem) { item in
             ModifiableItemDetailView2(
+                originalName: viewModel.state.items.first(where: {$0.id == item.id})?.name ?? "couldnt match",
                 item: item,
                 onSaveTapped: {
                     viewModel.onSaveTapped(item)
@@ -37,29 +38,44 @@ struct ScenarioThree: View {
                 onShowConfirmationTapped: {
                     viewModel.onShowConfirmationTapped(item)
                 },
-                onCommitTapped: { confirm in
-                    viewModel.onCommitTapped(confirm)
-                },
-                onAbortTapped: { confirm in
-                    viewModel.onAbortTapped(confirm)
-                },
-                onCancelConfirmTapped: {
-                    viewModel.onCancelConfirmTapped()
-                },
                 text: Binding(
                     get: { item.scratch },
                     set: {
                         viewModel.state.displayedItem?.scratch = $0
                     }
-                ), 
-                confirmation: Binding(
-                    get: { item.confirmation },
-                    set: {
-                        
-                        viewModel.onConfirmationChanged($0)
-                    }
                 )
             )
+            .sheet(item: Binding(
+                get: { item.confirmation },
+                set: {
+                    
+                    viewModel.onConfirmationChanged($0)
+                }
+            )) { confirm in
+                VStack {
+                    Text("before: \(confirm.before)")
+                    Text("after: \(confirm.after)")
+                                
+                    Button {
+                        viewModel.onCommitTapped(confirm)
+                    } label: {
+                        Text("commit")
+                    }
+                
+                    Button {
+                        viewModel.onAbortTapped(confirm)
+                    } label: {
+                        Text("abort")
+                    }
+
+                    Button {
+                        viewModel.onCancelConfirmTapped()
+                    } label: {
+                        Text("cancel")
+                    }
+                }
+            }
+
         }
     }
 }
@@ -75,8 +91,7 @@ struct ModifiableViewItem2: Identifiable {
     struct Confirmation: Identifiable {
         let id: ViewItem.ID
         let before: String
-        let after: String
-        
+        let after: String        
     }
  
     var confirmation: Confirmation?
@@ -128,7 +143,7 @@ final class ScenarioThreeViewModel: ObservableObject {
                 id: item.id,
                 before: before.name,
                 after: after
-            )            
+            )
         }
     }
 
@@ -165,23 +180,18 @@ final class ScenarioThreeViewModel: ObservableObject {
     }
 }
 
-
 struct ModifiableItemDetailView2: View {
+    let originalName: String
     let item: ModifiableViewItem2
     let onSaveTapped: () -> Void
     let onSaveAndExitTapped: () -> Void
     let onShowConfirmationTapped: () -> Void
-    let onCommitTapped: (ModifiableViewItem2.Confirmation) -> Void
-    let onAbortTapped: (ModifiableViewItem2.Confirmation) -> Void
-    let onCancelConfirmTapped: () -> Void
 
     @Binding var text: String
-    @Binding var confirmation: ModifiableViewItem2.Confirmation?
     
     var body: some View {
         VStack {
-            Text("detiail view")
-            Text(item.scratch)
+            Text("detiail view \(originalName)")
             Text(item.id.uuidString)
             
             Button {
@@ -201,33 +211,8 @@ struct ModifiableItemDetailView2: View {
             } label: {
                 Text("confirmation screen")
             }
-                        
+                                    
             TextField("some textfield", text: $text)
-        }
-        .sheet(item: $confirmation) { confirm in
-            VStack {
-                Text("before: \(confirm.before)")
-                Text("after: \(confirm.after)")
-                            
-                Button {
-                    onCommitTapped(confirm)
-                } label: {
-                    Text("commit")
-                }
-                
-                
-                Button {
-                    onAbortTapped(confirm)
-                } label: {
-                    Text("abort")
-                }
-
-                Button {
-                    onCancelConfirmTapped()
-                } label: {
-                    Text("cancel")
-                }
-            }
         }
     }
 }
