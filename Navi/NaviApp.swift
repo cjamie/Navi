@@ -11,9 +11,9 @@ import SwiftUI
 struct NaviApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            ScenarioOne(viewModel: .init(state: .mock))
-//            ScenarioTwo.init(viewModel: .init())
+//            ScenarioOne(viewModel: .init(state: .mock))
+//            ScenarioTwo(viewModel: .init())
+            ScenarioThree(viewModel: .init(state: .mock))
         }
     }
 }

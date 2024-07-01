@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5F1DA1E52C2F80D3006CE4EA /* NaviApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1DA1E42C2F80D3006CE4EA /* NaviApp.swift */; };
-		5F1DA1E72C2F80D3006CE4EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1DA1E62C2F80D3006CE4EA /* ContentView.swift */; };
 		5F1DA1E92C2F80D5006CE4EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F1DA1E82C2F80D5006CE4EA /* Assets.xcassets */; };
 		5F1DA1EC2C2F80D5006CE4EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F1DA1EB2C2F80D5006CE4EA /* Preview Assets.xcassets */; };
 		5F1DA1F32C2F841B006CE4EA /* ScenarioOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1DA1F22C2F841B006CE4EA /* ScenarioOne.swift */; };
@@ -19,7 +18,6 @@
 /* Begin PBXFileReference section */
 		5F1DA1E12C2F80D3006CE4EA /* Navi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F1DA1E42C2F80D3006CE4EA /* NaviApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviApp.swift; sourceTree = "<group>"; };
-		5F1DA1E62C2F80D3006CE4EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5F1DA1E82C2F80D5006CE4EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F1DA1EB2C2F80D5006CE4EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5F1DA1F22C2F841B006CE4EA /* ScenarioOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioOne.swift; sourceTree = "<group>"; };
@@ -59,7 +57,6 @@
 			children = (
 				5F1DA1E42C2F80D3006CE4EA /* NaviApp.swift */,
 				5F675C5B2C3246A100869689 /* ScenarioThree.swift */,
-				5F1DA1E62C2F80D3006CE4EA /* ContentView.swift */,
 				5F1DA1F22C2F841B006CE4EA /* ScenarioOne.swift */,
 				5F1DA1F42C2F8B3E006CE4EA /* ScenarioTwo.swift */,
 				5F1DA1E82C2F80D5006CE4EA /* Assets.xcassets */,
@@ -146,7 +143,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F1DA1E72C2F80D3006CE4EA /* ContentView.swift in Sources */,
 				5F1DA1E52C2F80D3006CE4EA /* NaviApp.swift in Sources */,
 				5F1DA1F52C2F8B3E006CE4EA /* ScenarioTwo.swift in Sources */,
 				5F1DA1F32C2F841B006CE4EA /* ScenarioOne.swift in Sources */,

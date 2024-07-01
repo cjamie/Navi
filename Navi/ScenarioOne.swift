@@ -13,8 +13,7 @@ import SwiftUI
  A B?
  
  when something happens in B, i can udpate A.
- 
- 
+  
  */
 
 struct ViewItem: Identifiable, Hashable, Codable {
@@ -36,20 +35,18 @@ final class ScenarioOneViewModel: ObservableObject {
         
         static let mock = ParentState(
             items: randomNames.map {
-                ViewItem.init(id: .init(), name: $0)
+                ViewItem(id: .init(), name: $0)
             }
         )
     }
     
     @Published var state: ParentState
     
-    init(state: ScenarioOneViewModel.ParentState = .mock) {
+    init(state: ParentState = .mock) {
         self.state = state
     }
     
     func onItemTapped(_ item: ViewItem) {
-        print("-=- \(#function) \(item)")
-        
         state.displayedItem = .init(
             id: item.id,
             scratch: item.name
@@ -77,7 +74,6 @@ final class ScenarioOneViewModel: ObservableObject {
 }
 
 struct ScenarioOne: View {
-    
     @ObservedObject var viewModel: ScenarioOneViewModel
     
     var body: some View {
@@ -137,6 +133,7 @@ struct ModifiableItemDetailView: View {
     let item: ModifiableViewItem
     let onSaveTapped: () -> Void
     let onSaveAndExitTapped: () -> Void
+
     @Binding var text: String
 
     var body: some View {
